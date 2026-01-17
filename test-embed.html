@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CloudPay Embed Test</title>
+</head>
+<body>
+  <h3>Merchant Website</h3>
+
+  <iframe
+    src="http://localhost:8080/checkout"
+    width="400"
+    height="300"
+    style="border:1px solid #ccc">
+  </iframe>
+
+  <script>
+    window.addEventListener("message", function (event) {
+      console.log("Checkout event received:", event.data);
+
+      if (event.data.type === "payment_created") {
+        alert("Payment created: " + event.data.payload.id);
+      }
+    });
+  </script>
+</body>
+</html>
